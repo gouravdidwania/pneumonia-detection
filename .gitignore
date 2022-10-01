@@ -1,0 +1,10 @@
+.ipynb_checkpoints
+data
+model
+test
+.idea
+__pycache__/
+data.zip
+Pneumonia Detection.ipynb
+training notebook'.ipynb
+Untitled.ipynb
