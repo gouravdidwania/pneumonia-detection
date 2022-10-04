@@ -60,7 +60,7 @@ async def call_model(file: UploadFile = File(...)):
 
     contents = file.file.read()
 
-    with open('../test/image.jpeg', 'wb') as f:
+    with open('test/image.jpeg', 'wb') as f:
         f.write(contents)
         f.close()
 
@@ -79,7 +79,6 @@ async def call_model(file: UploadFile = File(...)):
 
 @app.get("/predict_image", response_model=OutputRequest)
 def model():
-    os.system('streamlit run app.py')
     st.title('Pneumonia Detection API')
     st.subheader('Upload Image')
     file = st.file_uploader("Upload JPEG/JPG", type=['jpeg', 'jpg'])
@@ -90,7 +89,7 @@ def model():
                             "FileSize": file.size}
             st.write(file_details)
             st.image(file)
-            with open('../test/image.jpeg', 'wb') as f:
+            with open('test/image.jpeg', 'wb') as f:
                 f.write(file.getbuffer())
             st.write(file_details['Filename'], "is Uploaded Successfully!")
         else:
