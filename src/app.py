@@ -60,7 +60,7 @@ async def call_model(file: UploadFile = File(...)):
 
     contents = file.file.read()
 
-    with open('test/image.jpeg', 'wb') as f:
+    with open('../test/image.jpeg', 'wb') as f:
         f.write(contents)
         f.close()
 
@@ -90,7 +90,7 @@ def model():
                             "FileSize": file.size}
             st.write(file_details)
             st.image(file)
-            with open('test/image.jpeg', 'wb') as f:
+            with open('../test/image.jpeg', 'wb') as f:
                 f.write(file.getbuffer())
             st.write(file_details['Filename'], "is Uploaded Successfully!")
         else:
@@ -102,7 +102,7 @@ def model():
     image = preprocess_input(image)
 
     d = {1: 'Pneumonia', 0: 'Normal'}
-    model_path = './model/model_export.h5'
+    model_path = 'model/model_export.h5'
     model1 = keras.models.load_model(model_path)
     predict = model1.predict(image)
     var = d[int(predict[0][0])]
